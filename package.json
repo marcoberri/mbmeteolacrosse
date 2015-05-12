@@ -1,0 +1,27 @@
+{
+  "name": "mbmeteolacrosse",
+  "version": "1.0.0",
+  "description": "MbMeteo with laCorssi WS1640",
+  "scripts": {
+	  "start": "node server.js",
+	  "test" : "node_modules/mocha/bin/mocha --reporter spec -t 10000"
+  },
+  "author": "Marco Berri",
+  "license": "ISC",
+  "dependencies":{
+
+	"express" : "latest",
+	"compression": "latest",
+	"express-session": "latest",
+	"morgan":"latest",
+	"response-time":"latest",
+	"body-parser":"latest",
+	"method-override":"latest",
+		
+		
+	"mocha":"latest",
+	"mongodb":"~1.4",
+	"mongoskin":"latest"
+		
+	}
+}
