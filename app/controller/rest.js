@@ -8,7 +8,7 @@ exports.addData = function(req, res) {
 	var splitted = d.split(":");
 	
 	var result = {
-	          'ts': parseFloat(splitted[0]),
+	          'ts': new Date(parseFloat(splitted[0])),
 	          'T0': parseFloat(splitted[1]),
 	          'H0': parseFloat(splitted[2]),
 	          'T1': parseFloat(splitted[3]),
