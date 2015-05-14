@@ -9,9 +9,7 @@ describe('Routing ', function() {
 	it("POST - /data/addData", function(done) {
 
 	console.log(conf);
-	    var param = "data=1431288721:22.30:51:22.90:42:i:i:i:i:i:i:i:i:1016.1:i:5:0:4:0.0:0.0:21.5:6";
-//    var param="data=pippo";
-	    
+	    var param = "data=1431546545:22.75:60:22.80:54:i:i:i:i:i:i:i:i:1008.1:i:3:0:14:0.1:0.4:21.2:6";
 	    request.post({
 		headers : {
 		    'content-type' : 'application/x-www-form-urlencoded'
@@ -22,10 +20,7 @@ describe('Routing ', function() {
 		var obj = JSON.parse(resp.body);
 		console.log(resp.body);
 		var result = obj;
-		//assert.equal((obj.success == true && obj.data[0].id_utente == emailtestperson && obj.data[0].cod_edizione == testEdizione), true);
-		
-		
-		done();
+
 	    });
 	});
 
