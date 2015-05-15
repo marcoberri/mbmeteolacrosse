@@ -18,7 +18,7 @@
 	"body-parser":"latest",
 	"method-override":"latest",
 		
-		
+	"ejs":"latest",		
 	"mocha":"latest",
 	"mongodb":"~1.4",
 	"mongoskin":"latest"

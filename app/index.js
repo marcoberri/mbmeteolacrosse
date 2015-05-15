@@ -9,6 +9,9 @@ var bodyParser = require('body-parser')
 
 var app = express();
 
+//set view engine
+app.set('view engine', 'ejs');
+
 //express response time
 app.use(responseTime())
 
@@ -54,13 +57,17 @@ app.post('/data/addData', routesRest.addData);
 
 
 app.get('/', function (req, res) {
-	
-   /* var n = req.session.views || 0;
-    req.session.views = ++n;
-    var text = "Start page";
-    text +="\n tot view:" + n;
-    res.send(text);*/
-  
+  var site = require('./controller/site.js');
+
+
+ site.findLastLog(function(err,act){ 
+  res.render('index', {
+                       actual: act,
+                       b : "ciccio"
+             });
+    });
+    
+    
  });
 
 // Handle Error
