@@ -55,20 +55,29 @@ app.post('/data/addData', routesRest.addData);
 
 
 
-
+//template di index
+var site = require('./controller/site.js');
 app.get('/', function (req, res) {
-  var site = require('./controller/site.js');
 
-
- site.findLastLog(function(err,act){ 
+site.findLastLog(function(err,act){ 
   res.render('index', {
-                       actual: act,
-                       b : "ciccio"
+                       actual: act
              });
     });
-    
-    
  });
+
+
+//dati dei grafici 24 ore
+app.get('/T/24', site.findLastT24);
+
+//dati dei grafici 24 ore
+app.get('/H/24', site.findLastH24);
+
+//dati dei grafici 24 ore
+app.get('/PRESS/24', site.findLastPRESS24);
+
+//dati dei grafici 24 ore
+app.get('/WC/24', site.findLastWC24);
 
 // Handle Error
 app.use(function(req, res) {

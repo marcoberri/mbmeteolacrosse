@@ -6,3 +6,123 @@
     <script src="/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript"
+          src="https://www.google.com/jsapi?autoload={
+            'modules':[{
+              'name':'visualization',
+              'version':'1',
+              'packages':['line']
+            }]
+          }"></script>
+
+
+    <script type="text/javascript">
+
+
+	
+      google.setOnLoadCallback(drawChartT24);
+      google.setOnLoadCallback(drawChartH24);
+      google.setOnLoadCallback(drawChartPRESS24);
+
+      function drawChartT24() {
+
+	var options = {chart: {"title":"T° last 24 Hours"}, animation : {startup:true}};
+
+	 $.ajax({
+          url: "/T/24",
+          dataType: "JSON"
+        }).done(function(data) {
+
+		var dataTable = new google.visualization.DataTable();
+		dataTable.addColumn('datetime','time');
+		dataTable.addColumn('number','T°');
+		dataTable.addColumn('number','Max°');
+		dataTable.addColumn('number','Min°');
+
+
+	    $.each(data, function (i, row) {
+		    dataTable.addRow([
+		      (new Date(row.ts)),
+		      parseFloat(row.T1),
+		      parseFloat(row.max),
+		      parseFloat(row.min)
+		    ]);
+		  });
+
+		var chart = new google.charts.Line(document.getElementById('chartT24'));
+		chart.draw(dataTable, options);
+	});
+
+  
+      };
+
+
+      function drawChartPRESS24() {
+
+	var options = {chart: {"title":"Pressure last 24 Hours"},animation : {startup:true}};
+
+	 $.ajax({
+          url: "/PRESS/24",
+          dataType: "JSON"
+        }).done(function(data) {
+
+		var dataTable = new google.visualization.DataTable();
+		dataTable.addColumn('datetime','time');
+		dataTable.addColumn('number','P mBar');
+		dataTable.addColumn('number','Max mBar');
+		dataTable.addColumn('number','Min mBar');
+
+
+	    $.each(data, function (i, row) {
+		    dataTable.addRow([
+		      (new Date(row.ts)),
+		      parseFloat(row.PRESS),
+		      parseFloat(row.max),
+		      parseFloat(row.min)
+		    ]);
+		  });
+
+		var chart = new google.charts.Line(document.getElementById('chartPRESS24'));
+		chart.draw(dataTable, options);
+	});
+
+  
+      }
+
+
+      function drawChartH24() {
+
+	var options = {chart: {"title":"Humidity last 24 Hours"},animation : {startup:true}};
+
+	 $.ajax({
+          url: "/H/24",
+          dataType: "JSON"
+        }).done(function(data) {
+
+		var dataTable = new google.visualization.DataTable();
+		dataTable.addColumn('datetime','time');
+		dataTable.addColumn('number','H%');
+		dataTable.addColumn('number','Max%');
+		dataTable.addColumn('number','Min%');
+
+
+	    $.each(data, function (i, row) {
+		    dataTable.addRow([
+		      (new Date(row.ts)),
+		      parseFloat(row.H1),
+		      parseFloat(row.max),
+		      parseFloat(row.min)
+		    ]);
+		  });
+
+		var chart = new google.charts.Line(document.getElementById('chartH24'));
+		chart.draw(dataTable, options);
+	});
+
+  
+      }
+
+    </script>
+

@@ -2,54 +2,16 @@
 <html lang="en">
   <head>
 <% include includes/head %>
+
   </head>
 
   <body role="document">
 
-     <nav class="navbar navbar-inverse navbar-fixed-top">
 
-      <div class="container">
+<% include includes/nav %>
 
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="http://meteo.marcoberri.it">Meteo Farnese  -Santhi&agrave; (VC)</a>
-        </div>
+<% include includes/maintitle %>
 
- <div id="navbar" class="navbar-collapse collapse">
-
-          <ul class="nav navbar-nav">
-            <!--li class="active"><a href="#">Home</a></li-->
-            <!--li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li-->
-          </ul>
-        </div><!--/.nav-collapse -->
-
-
-      </div>
-
-    </nav>
-
-
-
-
-  <div class="container theme-showcase" role="main">
-      <div class="jumbotron">
-        <h1>Meteo Stations Farnese</h1>
-        <p>
-		La Crosse WS1640 - Santhi&agrave; (VC)<br/>
-		<br>
-		Lat 45.368135 <br/>
-		Lng 8.176897 <br/>
-		Alt 185 m<br/>
-
-</p>
-      </div>
-   </div>
 
   <div class="container">
 
@@ -68,7 +30,7 @@
   		<div class="tab-pane fade in active" id="home">
 
 		      <div class="row" style="width:200">
-			<div class="col-md-6" style="border: #cdcdcd medium solid; border-radius: 5px;">
+			<div class="col-md-6" >
 				<p>
 <dl class="dl-horizontal">
   <dt>TS:</dt>
@@ -79,8 +41,19 @@
   <dd><%= actual.T1 %>&deg;</dd>
 </dl>
 <dl class="dl-horizontal">
+  <dt>Temperature Max/Min:</dt>
+  <dd> <%= actual.T1MAX %>&deg; / <%= actual.T1MIN %>&deg; (24H)</dd>
+</dl>
+
+<dl class="dl-horizontal">
   <dt>Humidity:</dt>
   <dd><%= actual.H1 %>%</dd>
+</dl>
+
+
+<dl class="dl-horizontal">
+  <dt>Humidity Max/Min:</dt>
+  <dd> <%= actual.H1MAX %>% / <%= actual.H1MIN %>% (24H)</dd>
 </dl>
 
 <dl class="dl-horizontal">
@@ -88,6 +61,10 @@
   <dd><%= actual.PRESS %> mBar</dd>
 </dl>
 
+<dl class="dl-horizontal">
+  <dt>Pressure Max/Min:</dt>
+  <dd> <%= actual.PRESSMAX %> mBar / <%= actual.PRESSMIN %> mBar (24H)</dd>
+</dl>
 
 <dl class="dl-horizontal">
   <dt>Wind direction:</dt>
@@ -104,23 +81,26 @@
   <dd><%= actual.WC %> &deg;</dd>
 </dl>
 
+<dl class="dl-horizontal">
+  <dt>Windchill  Max/Min:</dt>
+  <dd><%= actual.WCMAX %>&deg; / <%= actual.WCMIN %>&deg; (24H)</dd>
+</dl>
 
 
                                     </p>
 
 
+			    <div id="chartPRESS24" style="margin-top:20px;padding:5 5 5 5;height: 400px;"></div>
+
+
 </div>
-<!--			<div class="col-md-4" style="border: #cdcdcd medium solid; border-radius: 5px;">
-
-.col-md-4
-
-</div-->
-		      </div>
-
-		</div>
+			<div class="col-md-6">
+			    <div id="chartT24" style="margin-top:30px;padding:5 5 5 5;height: 400px;"></div>
+			    <div id="chartH24" style="margin-top:30px;padding:5 5 5 5;height: 400px;"></div>
+			</div>
 	
-		  <div class="tab-pane fade" id="week">week</div>
-		  <div class="tab-pane fade" id="month">month</div>
+			  <div class="tab-pane fade" id="week">week</div>
+			  <div class="tab-pane fade" id="month">month</div>
 		  <div class="tab-pane fade" id="year">year</div>
 	</div>
  </div>
@@ -134,6 +114,10 @@
 <% include includes/footer %>
 
 </div>
+
+
+
+
 
 <% include includes/js %>
 
