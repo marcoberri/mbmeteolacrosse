@@ -10,12 +10,12 @@ exports.addData = function(req, res) {
 	var splitted = d.split(":");
 
 	var tmpTs = 1000 * parseFloat(splitted[0]);	
-	if(tmpTS <= 1431216000){
+	if(tmpTs <= 1431216000){
 		var result = {"ts" : tmpTs };
 		return sendJsonResponse(req,res,result);
 	}else{
 		var result = {
-			  'ts': new Date(tmpTS),
+			  'ts': new Date(tmpTs),
 			  'T0': parseFloat(splitted[1]),
 			  'H0': parseFloat(splitted[2]),
 			  'T1': parseFloat(splitted[3]),
