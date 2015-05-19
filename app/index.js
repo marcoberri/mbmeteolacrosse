@@ -11,6 +11,7 @@ var app = express();
 
 //set view engine
 app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
 
 //express response time
 app.use(responseTime())
@@ -25,7 +26,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(compression());
 
 //express static folder
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 //express session
 app.use(session({
@@ -57,8 +58,8 @@ app.post('/data/addData', routesRest.addData);
 
 //template di index
 var site = require('./controller/site.js');
-app.get('/', function (req, res) {
 
+app.get('/', function (req, res) {
 site.findLastLog(function(err,act){ 
   res.render('index', {
                        actual: act
@@ -66,18 +67,50 @@ site.findLastLog(function(err,act){
     });
  });
 
+app.get('/7day', function (req, res) {
+site.findLastLog(function(err,act){ 
+  res.render('7day');
+    });
+ });
+
+app.get('/30day', function (req, res) {
+site.findLastLog(function(err,act){ 
+  res.render('30day');
+    });
+ });
+
+app.get('/365day', function (req, res) {
+site.findLastLog(function(err,act){ 
+  res.render('365day');
+    });
+ });
 
 //dati dei grafici 24 ore
 app.get('/T/24', site.findLastT24);
-
-//dati dei grafici 24 ore
 app.get('/H/24', site.findLastH24);
-
-//dati dei grafici 24 ore
 app.get('/PRESS/24', site.findLastPRESS24);
-
-//dati dei grafici 24 ore
 app.get('/WC/24', site.findLastWC24);
+app.get('/RC/24', site.findLastRC24);
+
+app.get('/T/7', site.findLastT7);
+app.get('/H/7', site.findLastH7);
+app.get('/PRESS/7', site.findLastPRESS7);
+app.get('/WC/7', site.findLastWC7);
+app.get('/RC/7', site.findLastRC7);
+
+app.get('/T/30', site.findLastT30);
+app.get('/H/30', site.findLastH30);
+app.get('/PRESS/30', site.findLastPRESS30);
+app.get('/WC/30', site.findLastWC30);
+app.get('/RC/30', site.findLastRC30);
+
+
+app.get('/T/365', site.findLastT365);
+app.get('/H/365', site.findLastH365);
+app.get('/PRESS/365', site.findLastPRESS365);
+app.get('/WC/365', site.findLastWC365);
+app.get('/RC/365', site.findLastRC365);
+
 
 // Handle Error
 app.use(function(req, res) {

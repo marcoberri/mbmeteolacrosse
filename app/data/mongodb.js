@@ -44,7 +44,17 @@ exports.findLastLog = function(sorting,callback){
 
 										findMaxLastFrom(doc.ts.getTime() - 86400000, "WC", function(err,maxwc){
 											doc.WCMAX = maxwc;
-											callback(err,doc)
+
+
+											findMinLastFrom(doc.ts.getTime() - 86400000, "RC", function(err,minrc){
+												doc.RCMIN = minrc;
+
+												findMaxLastFrom(doc.ts.getTime() - 86400000, "RC", function(err,maxrc){
+													doc.RCMAX = maxrc;
+													callback(err,doc)
+												});						
+											});
+											
 										});						
 									});
 							});						
@@ -76,6 +86,9 @@ exports.findWCLastFrom = function(startFrom,callback){
 	return findLastFrom(startFrom,"WC",callback);
 };
 
+exports.findRCLastFrom = function(startFrom,callback){
+	return findLastFrom(startFrom,"RC",callback);
+};
 
 /**** Private **/
 findLastFrom = function(startFrom,fieldName, callback){

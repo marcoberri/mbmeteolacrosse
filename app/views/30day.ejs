@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<% include includes/head %>
+
+
+  </head>
+
+  <body role="document">
+
+
+<% include includes/nav %>
+
+<% include includes/maintitle %>
+
+
+  <div class="container">
+
+<div>
+
+	<a href="/" class="btn btn-info btn-lg active" role="button">Last 24h</a>
+	<a href="/7day" class="btn btn-info btn-lg active" role="button">Last 7 Day</a>
+	<a href="/30day" class="btn btn-info btn-lg disable" role="button">Last 30 Day</a>
+	<a href="/365day" class="btn btn-info btn-lg active" role="button">Last year</a>
+</div>    
+
+
+<div class="container">
+	<div class="tab-content">
+
+		      <div class="row">
+			<div class="col-md-12" >
+			    <div id="chartPRESS30" style="margin-top:40px;padding:5 5 5 5;height: 450px;"><div class="preloader">&nbsp;</div></div>
+			</div>
+		</div>
+
+	      <div class="row">
+			<div class="col-md-12" >
+			    <div id="chartT30" style="margin-top:30px;padding:5 5 5 5;height: 500px;"<div class="preloader">&nbsp;</div>></div>
+			</div>
+		</div>
+
+	      <div class="row">
+
+			<div class="col-md-12" >
+			    <div id="chartH30" style="margin-top:30px;padding:5 5 5 5;height: 400px;"><div class="preloader">&nbsp;</div></div>
+			</div>
+		 </div>
+
+
+	<div class="row">
+
+			<div class="col-md-12" >
+			    <div id="chartRC30" style="margin-top:30px;padding:5 5 5 5;height: 400px;"><div class="preloader">&nbsp;</div></div>
+
+			</div>
+		 </div>
+
+	<div class="row">
+
+			<div class="col-md-12" >
+			    <div id="chartWC30" style="margin-top:30px;padding:5 5 5 5;height: 400px;"><div class="preloader">&nbsp;</div></div>
+			</div>
+	</div>
+
+
+<% include includes/footer %>
+
+</div>
+
+
+
+
+
+<% include includes/js30 %>
+
+  </body>
+</html>
+
