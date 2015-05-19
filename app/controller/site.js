@@ -325,7 +325,7 @@ exports.findLastRC365 = function(req, res) {
 	mongo.findLastLog({'ts': -1},function(err,result){
 		console.log(result.ts.getTime());
 
-		var startFrom = result.ts.getTime() - (86400000 * 365);
+		var startFrom = result.ts.getTime() - (86400000 * 30 * 12);
 
 
 	mongo.findRCLastFrom(startFrom,function(err,result){
