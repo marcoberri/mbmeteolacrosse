@@ -60,29 +60,38 @@ app.post('/data/addData', routesRest.addData);
 var site = require('./controller/site.js');
 
 app.get('/', function (req, res) {
-site.findLastLog(function(err,act){ 
-  res.render('index', {
-                       actual: act
-             });
-    });
+	site.findLastLog(function(err,act){ 
+		res.render('index', {
+	                       actual: act
+	             });
+	    });
  });
 
 app.get('/7day', function (req, res) {
-site.findLastLog(function(err,act){ 
-  res.render('7day');
-    });
+	site.findLastLog(function(err,act){ 
+		res.render('7day', {
+	                       actual: act
+	             });
+	    });
+
  });
 
 app.get('/30day', function (req, res) {
-site.findLastLog(function(err,act){ 
-  res.render('30day');
-    });
+	site.findLastLog(function(err,act){ 
+		res.render('30day', {
+	                       actual: act
+	             });
+	    });
+
  });
 
 app.get('/365day', function (req, res) {
-site.findLastLog(function(err,act){ 
-  res.render('365day');
-    });
+	site.findLastLog(function(err,act){ 
+		res.render('365day', {
+	                       actual: act
+	             });
+	    });
+
  });
 
 //dati dei grafici 24 ore
