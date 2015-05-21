@@ -13,6 +13,16 @@ exports.addImport = function(key,obj,callback){
       });
 };
 
+
+
+exports.findPrevLog = function(callback){
+  var collection = mongodb.collection('rawdata');
+  collection.find({}, {"sort" : {"ts":-1},"limit":2}).toArray(function(err, doc) {
+		return callback(err,doc[1]);
+	});
+};
+
+
 exports.findLastLog = function(sorting,callback){
 
   var collection = mongodb.collection('rawdata');

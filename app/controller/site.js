@@ -1,7 +1,20 @@
 var mongo = require('../data/mongodb.js');
 
 exports.findLastLog = function(callback) {
-	mongo.findLastLog({'ts': -1},callback);
+	mongo.findLastLog({'ts': -1},function(err,first){
+		mongo.findPrevLog(function(err,prev){
+			console.log(prev.ts + " - " + first.ts);
+			first.RC = first.RC - prev.RC;
+			callback(err,first);
+		});		
+
+	});
+};
+
+exports.findPrevLog = function(callback) {
+	mongo.findPrevLog(function(err,result){
+		callback(err,result);
+	});
 };
 
 
