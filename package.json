@@ -19,6 +19,7 @@
 	"method-override":"latest",
 		
 	"ejs":"latest",		
+	"async":"latest",
 	"mocha":"latest",
 	"mongodb":"~1.4",
 	"mongoskin":"latest"

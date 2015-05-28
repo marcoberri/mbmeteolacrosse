@@ -1,4 +1,5 @@
 var mongo = require('../data/mongodb.js');
+var async = require('async');
 
 exports.findLastLog = function(callback) {
 	mongo.findLastLog({'ts': -1},function(err,first){
@@ -28,7 +29,12 @@ exports.findLastT24 = function(req, res) {
 
 
 		mongo.findTLastFrom(startFrom,function(err,result){
+		
+		        
+		
 			return	sendJsonResponse(req,res,result); 
+			
+			
 		});
 	});
 	
@@ -291,7 +297,10 @@ exports.findLastRC24 = function(req, res) {
 
 
 	mongo.findRCLastFrom(startFrom,function(err,result){
-		return	sendJsonResponse(req,res,result); 
+	
+		recalcRain(result,function(err,data){ 
+		        return	sendJsonResponse(req,res,data);
+		        }); 
 		});
 
 	});
@@ -309,7 +318,10 @@ exports.findLastRC7 = function(req, res) {
 
 
 	mongo.findRCLastFrom(startFrom,function(err,result){
-		return	sendJsonResponse(req,res,result); 
+	
+		recalcRain(result,function(err,data){ 
+		        return	sendJsonResponse(req,res,data);
+		        }); 
 		});
 
 	});
@@ -326,7 +338,10 @@ exports.findLastRC30 = function(req, res) {
 
 
 	mongo.findRCLastFrom(startFrom,function(err,result){
-		return	sendJsonResponse(req,res,result); 
+	
+		recalcRain(result,function(err,data){ 
+		        return	sendJsonResponse(req,res,data);
+		        }); 
 		});
 
 	});
@@ -342,12 +357,85 @@ exports.findLastRC365 = function(req, res) {
 
 
 	mongo.findRCLastFrom(startFrom,function(err,result){
-		return	sendJsonResponse(req,res,result); 
+	
+		recalcRain(result,function(err,data){ 
+		        return	sendJsonResponse(req,res,data);
+		        }); 
 		});
 
 	});
 	
 }; 
+
+
+recalcRain = function(data,callback){
+
+    var act = 0;
+    var first = true;
+    var prev = 0;
+    var returnData = [];
+    
+    var _min = 0;
+    var _max = 0;
+    
+    async.each(data,function(item,callback){
+    
+        if(first == true){
+            console.log("first");
+            prev = item.RC;
+            item.RC = 0;
+            first = false;
+            callback();
+            return;            
+        }else{
+            var tmp = item.RC;
+            //console.log("prev" + prev);
+            //console.log("item" + item.RC);
+            console.log(parseFloat(item.RC) - parseFloat(prev));
+            
+            var t = parseFloat(item.RC) - parseFloat(prev);
+            prev = item.RC;
+            item.RC = t;
+            if(t > _max)
+                _max = t;
+                
+            if(t <= 0){
+            callback();
+            return;
+            }
+            
+            
+            prev = tmp;
+        }
+        
+        delete item.min;
+        delete item.max;
+        
+        
+        returnData.push(item);
+        
+        callback();
+    },
+    function(err){
+    
+        var resultData = [];    
+            async.each(returnData,function(item,callback){
+            item.max = _max;
+            item.min = _min;
+            resultData.push(item);
+            callback();
+            
+            }, function(err){
+                 callback(null,resultData);
+            }
+            
+            
+            );
+        
+    
+    });
+};
+
 
 sendJsonResponse = function(req, res, data) {
     res.charset = 'UTF-8';
