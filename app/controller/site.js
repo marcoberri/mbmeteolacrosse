@@ -20,6 +20,85 @@ exports.findPrevLog = function(callback) {
 
 
 
+exports.findLastWDWS24 = function(req, res) {
+	//retrive last log date
+	mongo.findLastLog({'ts': -1},function(err,result){
+		console.log(result.ts.getTime());
+
+		var startFrom = result.ts.getTime() - 86400000;
+
+
+		mongo.findWDWSLastFrom(startFrom,function(err,result){
+		
+		        
+		
+			return	sendJsonResponse(req,res,result); 
+			
+			
+		});
+	});
+	
+}; 
+
+
+
+exports.findLastWDWS7 = function(req, res) {
+	//retrive last log date
+	mongo.findLastLog({'ts': -1},function(err,result){
+		console.log(result.ts.getTime());
+
+		var startFrom = result.ts.getTime() - (86400000 * 7);
+
+
+		mongo.findWDWSLastFrom(startFrom,function(err,result){
+		
+		        
+		
+			return	sendJsonResponse(req,res,result); 
+			
+			
+		});
+	});
+	
+}; 
+
+
+
+
+
+
+exports.findLastWDWS30 = function(req, res) {
+	//retrive last log date
+	mongo.findLastLog({'ts': -1},function(err,result){
+		console.log(result.ts.getTime());
+
+		var startFrom = result.ts.getTime() - (86400000 * 30);
+
+
+		mongo.findWDWSLastFrom(startFrom,function(err,result){
+			return	sendJsonResponse(req,res,result); 
+		});
+	});
+	
+}; 
+
+
+exports.findLastWDWS365 = function(req, res) {
+	//retrive last log date
+	mongo.findLastLog({'ts': -1},function(err,result){
+		console.log(result.ts.getTime());
+
+		var startFrom = result.ts.getTime() - (86400000 * 365);
+
+
+		mongo.findWDWSLastFrom(startFrom,function(err,result){
+			return	sendJsonResponse(req,res,result); 
+		});
+	});
+	
+}; 
+
+
 exports.findLastT24 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
@@ -39,6 +118,8 @@ exports.findLastT24 = function(req, res) {
 	});
 	
 }; 
+
+
 
 
 exports.findLastT7 = function(req, res) {
@@ -74,6 +155,9 @@ exports.findLastT30 = function(req, res) {
 }; 
 
 
+
+
+
 exports.findLastT365 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
@@ -88,6 +172,8 @@ exports.findLastT365 = function(req, res) {
 	});
 	
 }; 
+
+
 
 exports.findLastH24 = function(req, res) {
 	//retrive last log date

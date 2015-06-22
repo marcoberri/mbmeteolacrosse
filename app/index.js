@@ -99,18 +99,21 @@ app.get('/T/24', site.findLastT24);
 app.get('/H/24', site.findLastH24);
 app.get('/PRESS/24', site.findLastPRESS24);
 app.get('/WC/24', site.findLastWC24);
+app.get('/WDWS/24', site.findLastWDWS24);
 app.get('/RC/24', site.findLastRC24);
 
 app.get('/T/7', site.findLastT7);
 app.get('/H/7', site.findLastH7);
 app.get('/PRESS/7', site.findLastPRESS7);
 app.get('/WC/7', site.findLastWC7);
+app.get('/WDWS/7', site.findLastWDWS7);
 app.get('/RC/7', site.findLastRC7);
 
 app.get('/T/30', site.findLastT30);
 app.get('/H/30', site.findLastH30);
 app.get('/PRESS/30', site.findLastPRESS30);
 app.get('/WC/30', site.findLastWC30);
+app.get('/WDWS/30', site.findLastWDWS30);
 app.get('/RC/30', site.findLastRC30);
 
 
@@ -118,6 +121,7 @@ app.get('/T/365', site.findLastT365);
 app.get('/H/365', site.findLastH365);
 app.get('/PRESS/365', site.findLastPRESS365);
 app.get('/WC/365', site.findLastWC365);
+app.get('/WDWS/365', site.findLastWDWS365);
 app.get('/RC/365', site.findLastRC365);
 
 
