@@ -7,6 +7,37 @@
     </footer>
 
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">About</h4>
+      </div>
+      <div class="modal-body">
+        <strong>Hardware</strong><br/>
+        Meteo Station : <a href="http://www.amazon.it/La-Crosse-Technology-WS1640-meteorologica/dp/B00JMANZLA">La Crosse Technology WS1640</a><br/>
+        Meteo Station connected to <a href="https://www.raspberrypi.org/">Raspberry PI</a><br/>
+        <br/>
+        <strong>Software</strong><br/>
+        Server: Ubuntu 14.10 on Linode.com<br/>
+        Source Service to send data from Raspeberry PI to Site : <a href="https://github.com/marcoberri/mbmeteolacrossecaputre">github</a> in Java<br/>
+        Source this site: <a href="https://github.com/marcoberri/mbmeteolacrosse">github</a> in <a href="https://nodejs.org/">NodeJS</a><br/>
+        Source Batch to generate graph in crontab <a href="https://github.com/marcoberri/mbmeteolacrossegeneratechart">github</a> in Java<br/>
+        Data stored in <a href="https://www.mongodb.org/">MongoDB</a> <br/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
