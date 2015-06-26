@@ -19,11 +19,20 @@ exports.findPrevLog = function(callback) {
 };
 
 
+exports.findLast = function(req, res) {
+	//retrive last log date
+	mongo.findLastLog({'ts': -1},function(err,result){
+
+			return	sendJsonResponse(req,res,result); 
+	});
+	
+}; 
+
+
 
 exports.findLastWDWS24 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - 86400000;
 
@@ -45,7 +54,6 @@ exports.findLastWDWS24 = function(req, res) {
 exports.findLastWDWS7 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 7);
 
@@ -70,7 +78,6 @@ exports.findLastWDWS7 = function(req, res) {
 exports.findLastWDWS30 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 30);
 
@@ -86,7 +93,6 @@ exports.findLastWDWS30 = function(req, res) {
 exports.findLastWDWS365 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 365);
 
@@ -102,7 +108,6 @@ exports.findLastWDWS365 = function(req, res) {
 exports.findLastT24 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - 86400000;
 
@@ -125,7 +130,6 @@ exports.findLastT24 = function(req, res) {
 exports.findLastT7 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 7);
 
@@ -142,7 +146,6 @@ exports.findLastT7 = function(req, res) {
 exports.findLastT30 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 30);
 
@@ -159,9 +162,7 @@ exports.findLastT30 = function(req, res) {
 
 
 exports.findLastT365 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 30 * 12);
 
@@ -176,9 +177,7 @@ exports.findLastT365 = function(req, res) {
 
 
 exports.findLastH24 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - 86400000;
 
@@ -193,9 +192,7 @@ exports.findLastH24 = function(req, res) {
 
 
 exports.findLastH7 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 7);
 
@@ -212,7 +209,6 @@ exports.findLastH7 = function(req, res) {
 exports.findLastH30 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 30);
 
@@ -229,7 +225,6 @@ exports.findLastH30 = function(req, res) {
 exports.findLastH365 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 30 * 12);
 
@@ -245,7 +240,6 @@ exports.findLastH365 = function(req, res) {
 exports.findLastPRESS24 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - 86400000;
 
@@ -262,7 +256,6 @@ exports.findLastPRESS24 = function(req, res) {
 exports.findLastPRESS7 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 7);
 
@@ -276,9 +269,7 @@ exports.findLastPRESS7 = function(req, res) {
 }; 
 
 exports.findLastPRESS30 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 30);
 
@@ -293,9 +284,7 @@ exports.findLastPRESS30 = function(req, res) {
 
 
 exports.findLastPRESS365 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 30 * 12);
 
@@ -309,9 +298,7 @@ exports.findLastPRESS365 = function(req, res) {
 }; 
 
 exports.findLastWC24 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - 86400000;
 
@@ -326,9 +313,7 @@ exports.findLastWC24 = function(req, res) {
 
 
 exports.findLastWC7 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 7);
 
@@ -343,9 +328,7 @@ exports.findLastWC7 = function(req, res) {
 
 
 exports.findLastWC30 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 30);
 
@@ -359,9 +342,7 @@ exports.findLastWC30 = function(req, res) {
 }; 
 
 exports.findLastWC365 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 30 * 12);
 
@@ -375,9 +356,7 @@ exports.findLastWC365 = function(req, res) {
 }; 
 
 exports.findLastRC24 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - 86400000;
 
@@ -396,9 +375,7 @@ exports.findLastRC24 = function(req, res) {
 
 
 exports.findLastRC7 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 7);
 
@@ -416,9 +393,7 @@ exports.findLastRC7 = function(req, res) {
 
 
 exports.findLastRC30 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 30);
 
@@ -435,9 +410,7 @@ exports.findLastRC30 = function(req, res) {
 }; 
 
 exports.findLastRC365 = function(req, res) {
-	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){
-		console.log(result.ts.getTime());
 
 		var startFrom = result.ts.getTime() - (86400000 * 30 * 12);
 

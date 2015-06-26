@@ -67,6 +67,7 @@ app.get('/', function (req, res) {
 	    });
  });
 
+
 app.get('/7day', function (req, res) {
 	site.findLastLog(function(err,act){ 
 		res.render('7day', {
@@ -75,6 +76,8 @@ app.get('/7day', function (req, res) {
 	    });
 
  });
+
+app.get('/last',site.findLast);
 
 app.get('/30day', function (req, res) {
 	site.findLastLog(function(err,act){ 
