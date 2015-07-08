@@ -428,8 +428,8 @@ exports.findLastRC365 = function(req, res) {
 
 
 recalcRain = function(data,callback){
-
-    var act = 0;
+callback(null,data);
+/*    var act = 0;
     var first = true;
     var prev = 0;
     var returnData = [];
@@ -492,7 +492,7 @@ recalcRain = function(data,callback){
             );
         
     
-    });
+    });*/
 };
 
 
