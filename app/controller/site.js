@@ -428,7 +428,30 @@ exports.findLastRC365 = function(req, res) {
 
 
 recalcRain = function(data,callback){
-callback(null,data);
+
+    var returnData = [];
+
+
+    async.each(data,function(item,callback){
+    
+
+        if(!item.RC || parseInt(item.RC) == 0){        
+            callback();
+        }else{    
+            delete item.min;
+            delete item.max;
+            returnData.push(item);
+            callback();
+        }
+    },
+    function(err){
+    
+         callback(null,returnData);
+    
+    });
+    
+    
+//callback(null,data);
 /*    var act = 0;
     var first = true;
     var prev = 0;
