@@ -431,7 +431,7 @@ recalcRain = function(data,callback){
 
     var returnData = [];
 
-
+/*
     async.each(data,function(item,callback){
     
 
@@ -450,8 +450,8 @@ recalcRain = function(data,callback){
     
     });
     
-    
-//callback(null,data);
+*/    
+callback(null,data);
 /*    var act = 0;
     var first = true;
     var prev = 0;
