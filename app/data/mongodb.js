@@ -167,7 +167,8 @@ exports.findWCLastFrom = function(startFrom, callback) {
 };
 
 exports.findRCLastFrom = function(startFrom, callback) {
-	return findLastFrom(startFrom, "RC", callback);
+//	return findLastFrom(startFrom, "RC", callback);
+	return findLastFromRC(startFrom, "RC", callback);
 };
 
 exports.findWDWSLastFrom = function(startFrom, callback) {
@@ -260,6 +261,55 @@ findLastFrom = function(startFrom, fieldName, callback) {
 	});
 };
 
+
+findLastFromRC = function(startFrom, fieldName, callback) {
+
+	var collection = mongodb.collection('rain');
+
+	var q = {
+		"ts" : {
+			"$gte" : new Date(startFrom)
+		}
+	};
+
+	var f = {
+		"ts" : 1,
+		"_id" : 0
+	};
+	f[fieldName] = 1;
+
+	var s = {
+		"sort" : {
+			"ts" : 1
+		}
+	};
+
+	var sMax = {
+		"sort" : {}
+	};
+	sMax["sort"][fieldName] = -1;
+
+	findMaxLastFromRC(startFrom, fieldName, function(err, max) {
+
+		findMinLastFromRC(startFrom, fieldName, function(err, min) {
+
+			collection.find(q, f, s, function(err, cursor) {
+				var r = [];
+				cursor.each(function(err, item) {
+					if (item === null) {
+						callback(err, r);
+						return;
+					}
+					item.ts = item.ts.getTime();
+					item.max = max;
+					item.min = min;
+					r.push(item);
+				});
+			});
+		});
+	});
+};
+
 findMinLastFrom = function(startFrom, fieldName, callback) {
 	var collection = mongodb.collection('rawdata');
 
@@ -287,6 +337,57 @@ findMinLastFrom = function(startFrom, fieldName, callback) {
 
 findMaxLastFrom = function(startFrom, fieldName, callback) {
 	var collection = mongodb.collection('rawdata');
+
+	var q = {
+		"ts" : {
+			"$gte" : new Date(startFrom)
+		}
+	};
+	var f = {
+		"ts" : 1,
+		"_id" : 0
+	};
+	f[fieldName] = 1;
+
+	var sMax = {
+		"sort" : {}
+	};
+	sMax["sort"][fieldName] = -1;
+
+	collection.findOne(q, f, sMax, function(err, max) {
+		callback(err, max[fieldName]);
+	});
+
+};
+
+
+findMinLastFromRC = function(startFrom, fieldName, callback) {
+	var collection = mongodb.collection('rain');
+
+	var q = {
+		"ts" : {
+			"$gte" : new Date(startFrom)
+		}
+	};
+	var f = {
+		"ts" : 1,
+		"_id" : 0
+	};
+	f[fieldName] = 1;
+
+	var sMin = {
+		"sort" : {}
+	};
+	sMin["sort"][fieldName] = 1;
+
+	collection.findOne(q, f, sMin, function(err, max) {
+		callback(err, max[fieldName]);
+	});
+
+};
+
+findMaxLastFromRC = function(startFrom, fieldName, callback) {
+	var collection = mongodb.collection('rain');
 
 	var q = {
 		"ts" : {
