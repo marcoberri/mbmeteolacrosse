@@ -25,7 +25,7 @@ Le configurazione della app si trovano sotto a /app/conf.js
 ## TODO
 Interfaccia di visualizzazione dati storici.
 
-## Sviluppo
+## Batch e MapReduce
 MapReduce per calcolo del massimo e minimo dei dati per periodo giono/mese/anno : (https://gist.github.com/marcoberri/c246f1878601cc531a9a)
 
 Script per il ricalcolo del valore delle rain, uscendo dal contatore globale a quello della singola caduta nel periodo: (https://gist.github.com/marcoberri/a6bda3536c6d49bbe9c5)
