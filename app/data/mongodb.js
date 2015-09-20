@@ -240,9 +240,9 @@ findLastFrom = function(startFrom, fieldName, callback) {
 	};
 	sMax["sort"][fieldName] = -1;
 
-	findMaxLastFrom(startFrom, fieldName, function(err, max) {
+//	findMaxLastFrom(startFrom, fieldName, function(err, max) {
 
-		findMinLastFrom(startFrom, fieldName, function(err, min) {
+//		findMinLastFrom(startFrom, fieldName, function(err, min) {
 
 			collection.find(q, f, s, function(err, cursor) {
 				var r = [];
@@ -252,13 +252,13 @@ findLastFrom = function(startFrom, fieldName, callback) {
 						return;
 					}
 					item.ts = item.ts.getTime();
-					item.max = max;
-					item.min = min;
+					//item.max = max;
+					//item.min = min;
 					r.push(item);
 				});
 			});
-		});
-	});
+//		});
+//	});
 };
 
 
@@ -289,9 +289,9 @@ findLastFromRC = function(startFrom, fieldName, callback) {
 	};
 	sMax["sort"][fieldName] = -1;
 
-	findMaxLastFromRC(startFrom, fieldName, function(err, max) {
+//	findMaxLastFromRC(startFrom, fieldName, function(err, max) {
 
-		findMinLastFromRC(startFrom, fieldName, function(err, min) {
+	//	findMinLastFromRC(startFrom, fieldName, function(err, min) {
 
 			collection.find(q, f, s, function(err, cursor) {
 				var r = [];
@@ -301,12 +301,12 @@ findLastFromRC = function(startFrom, fieldName, callback) {
 						return;
 					}
 					item.ts = item.ts.getTime();
-					item.max = max;
-					item.min = min;
+					//item.max = max;
+					//item.min = min;
 					r.push(item);
 				});
-			});
-		});
+//			});
+//		});
 	});
 };
 
