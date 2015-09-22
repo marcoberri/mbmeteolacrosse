@@ -18,6 +18,17 @@ exports.addImport = function(key, obj, callback) {
 	});
 };
 
+exports.addSystem = function(obj, callback) {
+	var collection = mongodb.collection('sysdata');
+	collection.insert(obj, function(err, result) {
+		if (err)
+			throw err;
+		if (result)
+			console.log('System Added!');
+		callback();
+	});
+};
+
 exports.findPrevLog = function(callback) {
 	var collection = mongodb.collection('rawdata');
 	collection.find({}, {

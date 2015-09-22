@@ -52,6 +52,7 @@ app.all('/*', function (req, res, next) {
 //servlet di caricamento dati
 var routesRest = require('./controller/rest');
 app.post('/data/addData', routesRest.addData);
+app.post('/data/addSystem', routesRest.addSystem);
 
 
 

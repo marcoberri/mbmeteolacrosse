@@ -37,6 +37,38 @@ exports.addData = function(req, res) {
 };
 
 
+exports.addSystem = function(req, res) {
+
+        console.log("method" + req.method);
+
+	var d = req.body.data;
+	console.log("data:" + d);
+	
+	var splitted = d.split(":");
+
+		var result = {
+			  'ts': new Date(),
+			  'SYSSW': splitted[0],
+			  'BARSW': splitted[1],			  
+                          'EXTSW': splitted[2],			  			  
+                          'RCCSW': splitted[3],			                            
+                          'WINSW': splitted[4],			                            
+                          'BATR': splitted[5],			                            
+                          'BATU': splitted[6],			                            
+                          'BATW': splitted[7],
+                          'BAT5': splitted[8],
+                          'BAT4': splitted[9],
+                          'BAT3': splitted[10],                          
+                          'BAT2': splitted[11],		
+                          'BAT1': splitted[12]
+                          };
+	
+		mongo.addSystem(result,function(err){
+			return sendJsonResponse(req,res,result);
+		});
+};
+
+
 sendJsonResponse = function(req, res, data) {
     res.charset = 'UTF-8';
     //todo
