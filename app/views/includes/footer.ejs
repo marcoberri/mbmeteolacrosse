@@ -47,15 +47,20 @@
       </div>
       <div class="modal-body">
         <strong>Hardware Status</strong><br/>
-	last check: <%= system.ts%> <br/>
-	Battery Rain : <%= system.BATR%><br/>
-	Battery Rain : <%= system.BATU%><br/>
-	Battery Wind : <%= system.BATW%><br/>
-	Battery 1 : <%= system.BAT1%><br/>
-	Battery 2 : <%= system.BAT2%><br/>
-	Battery 3 : <%= system.BAT3%><br/>
-	Battery 4 : <%= system.BAT4%><br/>
-	Battery 5 : <%= system.BAT5%><br/>
+	<% if(system != null) {%>
+	<strong>Last check </strong> : <%=system.ts%> <br/>
+	<strong>Battery Rain</strong> : <%if(system.BATR == 1){ %> <span style="color:green"><%= system.BATR%></span> <%}else{%><span style="color:red"><%= system.BATR%></span>   <%}%><br/>
+	<strong>Battery Wind</strong> : <%if(system.BATW == 1){ %> <span style="color:green"><%= system.BATW%></span> <%}else{%><span style="color:red"><%= system.BATW%></span>   <%}%><br/>
+	<strong>Battery 1</strong> : <%if(system.BAT1 == 1){ %> <span style="color:green"><%= system.BAT1%></span> <%}else{%><span style="color:red"><%= system.BAT1%></span>   <%}%><br/>
+	<strong>Battery 2</strong> : <%if(system.BAT2 == 1){ %> <span style="color:green"><%= system.BAT2%></span> <%}else{%><span style="color:red"><%= system.BAT2%></span>   <%}%><br/>
+	<strong>Battery 3</strong> : <%if(system.BAT3 == 1){ %> <span style="color:green"><%= system.BAT3%></span> <%}else{%><span style="color:red"><%= system.BAT3%></span>   <%}%><br/>
+	<strong>Battery 4</strong> : <%if(system.BAT4 == 1){ %> <span style="color:green"><%= system.BAT4%></span> <%}else{%><span style="color:red"><%= system.BAT4%></span>   <%}%><br/>
+	<strong>Battery 5</strong> : <%if(system.BAT5 == 1){ %> <span style="color:green"><%= system.BAT5%></span> <%}else{%><span style="color:red"><%= system.BAT5%></span>   <%}%><br/>
+<%}else{%>
+<b>No Data Found</b>
+<%}%>
+<br/>
+<br/>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

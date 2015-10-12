@@ -50,7 +50,7 @@ exports.findLastSystem = function(callback) {
 		},
 		"limit" : 1
 	}).toArray(function(err, doc) {
-		return callback(err, doc[1]);
+		return callback(err, doc[0]);
 	});
 };
 
