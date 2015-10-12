@@ -12,6 +12,13 @@ exports.findLastLog = function(callback) {
 	});
 };
 
+exports.findLastSystem = function(callback) {
+	mongo.findLastSystem(function(err,last){
+			callback(err,last);
+	});
+};
+
+
 exports.findPrevLog = function(callback) {
 	mongo.findPrevLog(function(err,result){
 		callback(err,result);

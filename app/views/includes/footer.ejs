@@ -46,10 +46,16 @@
         <h4 class="modal-title" id="myModalLabel">System Status</h4>
       </div>
       <div class="modal-body">
-        <strong>Hardware</strong><br/>
-	work in progess
-      </div>
-      <div class="modal-footer">
+        <strong>Hardware Status</strong><br/>
+	last check: <%= system.ts%> <br/>
+	Battery Rain : <%= system.BATR%><br/>
+	Battery Rain : <%= system.BATU%><br/>
+	Battery Wind : <%= system.BATW%><br/>
+	Battery 1 : <%= system.BAT1%><br/>
+	Battery 2 : <%= system.BAT2%><br/>
+	Battery 3 : <%= system.BAT3%><br/>
+	Battery 4 : <%= system.BAT4%><br/>
+	Battery 5 : <%= system.BAT5%><br/>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

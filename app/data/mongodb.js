@@ -41,6 +41,19 @@ exports.findPrevLog = function(callback) {
 	});
 };
 
+exports.findLastSystem = function(callback) {
+	var collection = mongodb.collection('sysdata');
+	
+	collection.find({}, {
+		"sort" : {
+			"ts" : -1
+		},
+		"limit" : 1
+	}).toArray(function(err, doc) {
+		return callback(err, doc[1]);
+	});
+};
+
 exports.findLastLog = function(sorting, callback) {
 
 	var collection = mongodb.collection('rawdata');

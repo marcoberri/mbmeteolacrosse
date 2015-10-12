@@ -62,17 +62,27 @@ var site = require('./controller/site.js');
 
 app.get('/', function (req, res) {
 	site.findLastLog(function(err,act){ 
-		res.render('index', {
-	                       actual: act
-	             });
+	
+		site.findLastSystem(function(err,s){ 
+		
+		      res.render('index', {
+	                       actual: act,
+	                       system: s
+	                       });
+	                       
+                });
 	    });
  });
 
 
 app.get('/7day', function (req, res) {
 	site.findLastLog(function(err,act){ 
-		res.render('7day', {
-	                       actual: act
+	
+			site.findLastSystem(function(err,s){ 
+  		res.render('7day', {
+	                       actual: act,
+	                       system:s
+	             });
 	             });
 	    });
 
@@ -82,8 +92,12 @@ app.get('/last',site.findLast);
 
 app.get('/30day', function (req, res) {
 	site.findLastLog(function(err,act){ 
+	
+				site.findLastSystem(function(err,s){ 
 		res.render('30day', {
-	                       actual: act
+	                       actual: act,
+                               system: s
+	             });
 	             });
 	    });
 
@@ -91,8 +105,11 @@ app.get('/30day', function (req, res) {
 
 app.get('/365day', function (req, res) {
 	site.findLastLog(function(err,act){ 
+				site.findLastSystem(function(err,s){ 
 		res.render('365day', {
-	                       actual: act
+	                       actual: act,
+	                       system:s
+	             });
 	             });
 	    });
 
