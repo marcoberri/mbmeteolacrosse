@@ -117,6 +117,8 @@ app.get('/365day', function (req, res) {
 
 //dati dei grafici 24 ore
 app.get('/T/24', site.findLastT24);
+app.get('/T/MaxMin/24', site.findLastMaxMinT24);
+
 app.get('/H/24', site.findLastH24);
 app.get('/PRESS/24', site.findLastPRESS24);
 app.get('/WC/24', site.findLastWC24);

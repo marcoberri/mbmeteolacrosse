@@ -37,6 +37,28 @@ exports.findLast = function(req, res) {
 
 
 
+exports.findLastMaxMinT24 = function(req,res){
+
+    var d = new Date();
+    d.setDate(d.getDate()-5);
+    
+    var m = d.getMonth() +1;
+    if(m < 10)
+        m = "0"+m;
+    
+    var day = d.getDate();
+    if(day < 10)
+        day = "0"+day;
+        
+    mongo.findMaxMinT1Hour(d.getFullYear() + "-"+m + "-" + day, 
+        function(err,result){
+        return	sendJsonResponse(req,res,result); 
+        }
+    
+    );
+
+}
+
 exports.findLastWDWS24 = function(req, res) {
 	//retrive last log date
 	mongo.findLastLog({'ts': -1},function(err,result){

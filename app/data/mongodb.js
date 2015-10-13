@@ -29,6 +29,7 @@ exports.addSystem = function(obj, callback) {
 	});
 };
 
+
 exports.findPrevLog = function(callback) {
 	var collection = mongodb.collection('rawdata');
 	collection.find({}, {
@@ -199,7 +200,37 @@ exports.findWDWSLastFrom = function(startFrom, callback) {
 	return findLastFromWDWS(startFrom, callback);
 };
 
+exports.findMaxMinT1Hour= function(date, callback) {
+	return findMaxMinFrom("T1","Hour", date, callback);
+};
+
+
 /** ** Private * */
+
+
+findMaxMinFrom = function(field, period, date, callback) {
+
+	var collection = mongodb.collection('maxmindata');
+
+	var p1 = field + "Min" + period;	
+	var p2 = field+"Max"+period;
+
+	date = date + "*"
+	var q = {
+		"ts" : {"$regex" : date }
+		};
+	q[p1] = {"$exists":true};
+	q[p2] = {"$exists":true};
+		
+	var f={};	
+	f[p1]=1;
+	f[p2]=1;
+	f["ts"]=1;
+
+	console.log(f);		
+	collection.find(q,f).toArray(function(err,doc){callback(err, doc);});
+
+};
 
 findLastFromWDWS = function(startFrom, callback) {
 
