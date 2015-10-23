@@ -1,0 +1,12 @@
+{
+  "name": "angular-seed",
+  "description": "Workshop AngularJS",
+  "version": "0.0.1",
+  "homepage": "https://bitbucket.org/corley/angular-workshop",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.3.0",
+    "jquery" :">=2.4"
+  }
+}
