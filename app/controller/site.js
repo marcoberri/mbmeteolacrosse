@@ -50,7 +50,7 @@ exports.findLastMaxMinT24 = function(req,res){
     if(day < 10)
         day = "0"+day;
         
-    mongo.findMaxMinT1Hour(d.getFullYear() + "-"+m + "-" + day, 
+    mongo.findMaxMinT1Hour(d.getFullYear() + "//-"+m + "//-" + day, 
         function(err,result){
         return	sendJsonResponse(req,res,result); 
         }
