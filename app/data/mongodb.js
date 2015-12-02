@@ -215,7 +215,7 @@ findMaxMinFrom = function(field, period, date, callback) {
 	var p1 = field + "Min" + period;	
 	var p2 = field+"Max"+period;
 
-	date = date + "*"
+	date = date;
 	var q = {
 		"ts" : {"$regex" : date }
 		};
