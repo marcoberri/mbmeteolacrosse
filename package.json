@@ -21,8 +21,8 @@
 	"ejs":"latest",		
 	"async":"latest",
 	"mocha":"latest",
-	"mongodb":"~1.4",
-	"mongoskin":"latest"
+	"mongodb":"latest",
+	"mongoskin":"1.4.3"
 		
 	}
 }

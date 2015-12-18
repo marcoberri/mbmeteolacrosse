@@ -204,6 +204,12 @@ exports.findMaxMinT1Hour= function(date, callback) {
 	return findMaxMinFrom("T1","Hour", date, callback);
 };
 
+exports.findMaxMinT1Day= function(date, callback) {                                                  
+        return findMaxMinFrom("T1","Day", date, callback);                                           
+};
+exports.findMaxMinH1Hour= function(date, callback) {                                                                                                               
+        return findMaxMinFrom("H1","Hour", date, callback);                                                                                                        
+};
 
 /** ** Private * */
 
@@ -215,7 +221,7 @@ findMaxMinFrom = function(field, period, date, callback) {
 	var p1 = field + "Min" + period;	
 	var p2 = field+"Max"+period;
 
-	date = date;
+	date =  date;
 	var q = {
 		"ts" : {"$regex" : date }
 		};
