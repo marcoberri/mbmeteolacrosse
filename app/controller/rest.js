@@ -16,6 +16,7 @@ exports.addData = function(req, res) {
 	}else{
 		var result = {
 			  'ts': new Date(tmpTs),
+			  'tsMillis' : tmpTs,
 			  'T0': parseFloat(splitted[1]),
 			  'H0': parseFloat(splitted[2]),
 			  'T1': parseFloat(splitted[3]),

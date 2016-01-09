@@ -232,10 +232,10 @@ exports.findLastT30 = function(req, res) {
 
 
 exports.findLastT365 = function(req, res) {
-	mongo.findLastLog({'ts': -1},function(err,result){
+	mongo.findLastLog({'tsMillis': -1},function(err,result){
 
-		var startFrom = result.ts.getTime() - (86400000 * 30 * 12);
-
+		var startFrom = result.tsMillis - (86400000 * 30 * 12);
+		console.log("start from " + startFrom);
 
 		mongo.findTLastFrom(startFrom,function(err,result){
 			return	sendJsonResponse(req,res,result); 

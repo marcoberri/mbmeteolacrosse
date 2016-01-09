@@ -279,20 +279,21 @@ findLastFrom = function(startFrom, fieldName, callback) {
 	var collection = mongodb.collection('rawdata');
 
 	var q = {
-		"ts" : {
-			"$gte" : new Date(startFrom)
+		"tsMillis" : {
+			"$gte" : startFrom
 		}
 	};
 
 	var f = {
 		"ts" : 1,
+		"tsMillis":1,
 		"_id" : 0
 	};
 	f[fieldName] = 1;
 
 	var s = {
 		"sort" : {
-			"ts" : 1
+			"tsMillis" : 1
 		}
 	};
 
@@ -300,6 +301,7 @@ findLastFrom = function(startFrom, fieldName, callback) {
 		"sort" : {}
 	};
 	sMax["sort"][fieldName] = -1;
+	console.log("q-->" + JSON.stringify(q));
 
 //	findMaxLastFrom(startFrom, fieldName, function(err, max) {
 
@@ -308,11 +310,12 @@ findLastFrom = function(startFrom, fieldName, callback) {
 			collection.find(q, f, s, function(err, cursor) {
 				var r = [];
 				cursor.each(function(err, item) {
-					if (item === null) {
+					if (err || item === null || item.tsMillis === null) {
 						callback(err, r);
 						return;
 					}
-					item.ts = item.ts.getTime();
+					//console.log(item.tsMillis);
+					item.ts = item.tsMillis;
 					//item.max = max;
 					//item.min = min;
 					r.push(item);
